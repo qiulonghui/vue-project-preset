@@ -10,9 +10,21 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: 'Home',
+  name: "Home",
+  props: {},
   components: {
-    HelloWorld
-  }
-}
+		HelloWorld
+	},
+  data() {
+    return {};
+  },
+  computed: {},
+  created() {},
+  mounted() {},
+  methods: {},
+  watch: {}
+};
 </script>
+
+<style scoped lang="scss">
+</style>
