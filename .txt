@@ -1,3 +1,5 @@
+基于Vue CLI v4.0.4
+
 postcss-import  postcss-url  autoprefixer  babel-plugin-import -D
 
 postcss-px-to-viewport  axios  vant  dayjs -S
