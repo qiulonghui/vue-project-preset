@@ -25,9 +25,9 @@ http.interceptors.request.use(
 // respone拦截器
 http.interceptors.response.use(
   response => {
-    const { data,code } = response.data
+    const { code } = response.data
     if(code==='200') {
-      return data
+      return response.data
     }
     // code非200为业务逻辑错误, 放到catch中处理， then中只处理业务码200的情况
     return Promise.reject(response.data)
