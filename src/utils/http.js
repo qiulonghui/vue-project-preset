@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {Toast} from 'vant'
 
 // 创建axios实例
 const http = axios.create({
@@ -25,23 +26,19 @@ http.interceptors.request.use(
 // respone拦截器
 http.interceptors.response.use(
   response => {
-    const { code } = response.data
-    if(code==='200') {
       return response.data
-    }
-    // code非200为业务逻辑错误, 放到catch中处理， then中只处理业务码200的情况
-    return Promise.reject(response.data)
   },
   error => {
     // http错误处理
     console.log('err' + error) // for debug
     const {message, response} = error
-    const errInfo = {
-      // 无网络、请求超时 response 为undefined,
-      code: response ? response.status : 'otherError',
-      msg: message
-    }
-    return Promise.reject(errInfo)
+    // const errInfo = {
+    //   // 无网络、请求超时 response 为undefined,
+    //   code: response ? response.status : 'otherError',
+    //   msg: message
+		// }
+		Toast(message)
+    return Promise.reject(response)
   }
 )
 
