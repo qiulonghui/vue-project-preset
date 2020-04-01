@@ -11,6 +11,10 @@ const http = axios.create({
 // request拦截器
 http.interceptors.request.use(
   config => {
+		Toast.loading({
+			duration: 0, // 持续展示 loading
+			message: '请稍后...'
+		})
     const ts = new Date().getTime()
     if(!config.params) config.params = {}
     config.params.ts = ts
@@ -26,17 +30,12 @@ http.interceptors.request.use(
 // respone拦截器
 http.interceptors.response.use(
   response => {
-      return response.data
+		return response.data 
   },
   error => {
     // http错误处理
     console.log('err' + error) // for debug
     const {message, response} = error
-    // const errInfo = {
-    //   // 无网络、请求超时 response 为undefined,
-    //   code: response ? response.status : 'otherError',
-    //   msg: message
-		// }
 		Toast(message)
     return Promise.reject(response)
   }
