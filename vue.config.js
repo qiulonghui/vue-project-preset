@@ -1,13 +1,13 @@
 const isProduction = process.env.NODE_ENV === 'production';
-const cdn = {
-	css: [],
-	js: [
-		'https://cdn.bootcss.com/vue/2.6.11/vue.runtime.min.js',
-		'https://cdn.bootcss.com/vue-router/3.1.3/vue-router.min.js',
-		'https://cdn.bootcss.com/vuex/3.1.2/vuex.min.js',
-		'https://cdn.bootcss.com/axios/0.19.2/axios.min.js',
-	]
-}
+// const cdn = {
+// 	css: [],
+// 	js: [
+// 		'https://cdn.bootcss.com/vue/2.6.11/vue.runtime.min.js',
+// 		'https://cdn.bootcss.com/vue-router/3.1.3/vue-router.min.js',
+// 		'https://cdn.bootcss.com/vuex/3.1.2/vuex.min.js',
+// 		'https://cdn.bootcss.com/axios/0.19.2/axios.min.js',
+// 	]
+// }
 //configureWebpack.optimization 配置项
 // let optimization = {
 // 	runtimeChunk: 'single',
@@ -31,24 +31,24 @@ const cdn = {
 // }
 
 // configureWebpack.externals 配置项
-let externals = {
-	'vue': 'Vue',
-	'vuex': 'Vuex',
-	'vue-router': 'VueRouter',
-	'axios': 'axios'
-}
+// let externals = {
+// 	'vue': 'Vue',
+// 	'vuex': 'Vuex',
+// 	'vue-router': 'VueRouter',
+// 	'axios': 'axios'
+// }
 
 module.exports = {
 	publicPath: './', // 根域上下文目录
-	configureWebpack: config => {
-		if (isProduction) {
-			config.mode = 'production'
-			Object.assign(config, {
-				externals,
-				// optimization
-			})
-		}
-	},
+	// configureWebpack: config => {
+	// 	if (isProduction) {
+	// 		config.mode = 'production'
+	// 		Object.assign(config, {
+	// 			externals,
+	// 			// optimization
+	// 		})
+	// 	}
+	// },
 	chainWebpack: config => {
 		if (isProduction) {
 			config.module
@@ -59,11 +59,11 @@ module.exports = {
 					options.limit = 10240
 					return options
 				});
-			config.plugin('html')
-				.tap(args => {
-					args[0].cdn = cdn;
-					return args;
-				});
+			// config.plugin('html')
+			// 	.tap(args => {
+			// 		args[0].cdn = cdn;
+			// 		return args;
+			// 	});
 		}
 	},
   // devServer: {

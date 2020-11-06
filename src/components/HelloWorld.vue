@@ -39,7 +39,7 @@ export default {
     msg: String
 	},
 	created() {
-		this.$toast('123')
+		// this.$toast('123')
 	}
 }
 </script>
